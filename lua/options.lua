@@ -77,4 +77,4 @@ vim.o.shiftwidth = 4
 vim.o.expandtab = true
 
 -- Color 81st character
-vim.o.colorcolumn = '81'
+vim.o.colorcolumn = '121'
