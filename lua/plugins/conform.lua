@@ -19,6 +19,9 @@ return {
                 stylue = {
                     prepend_args = { '--column-width', '120' },
                 },
+                black = {
+                    prepend_args = { '--line-length', '120' },
+                },
             },
             format_on_save = function(bufnr)
                 -- Disable "format_on_save lsp_fallback" for languages that don't
