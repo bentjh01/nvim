@@ -169,15 +169,17 @@ return {
         severity_sort = true,
         float = { border = 'rounded', source = 'if_many' },
         underline = { severity = vim.diagnostic.severity.ERROR },
-        signs = vim.g.have_nerd_font and {
-          text = {
+        signs = {
+          severity = { min = vim.diagnostic.severity.ERROR },
+          text = vim.g.have_nerd_font and {
             [vim.diagnostic.severity.ERROR] = '󰅚 ',
             [vim.diagnostic.severity.WARN] = '󰀪 ',
             [vim.diagnostic.severity.INFO] = '󰋽 ',
             [vim.diagnostic.severity.HINT] = '󰌶 ',
-          },
-        } or {},
+          } or nil,
+        },
         virtual_text = {
+          severity = { min = vim.diagnostic.severity.ERROR },
           source = 'if_many',
           spacing = 2,
           format = function(diagnostic)
@@ -210,7 +212,15 @@ return {
       local servers = {
         -- clangd = {},
         -- gopls = {},
-        basedpyright = {},
+        basedpyright = {
+          settings = {
+            basedpyright = {
+              analysis = {
+                typeCheckingMode = 'standard', -- 'off' | 'basic' | 'standard' | 'strict' | 'recommended' (default)
+              },
+            },
+          },
+        },
         -- rust_analyzer = {},
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
         --
